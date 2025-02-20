@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Chats</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .chat-item {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chat-item:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        .chat-sidebar {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 chat-sidebar">
+                <h3>Your Chats</h3>
+                <ul class="list-group">
+                    {% if chats %}
+                        {% for chat in chats %}
+                            <li class="list-group-item chat-item">
+                                <a href="{{ url_for('chat_details', chat_id=chat[0]) }}">
+                                    Chat ID: {{ chat[0] }} - Created At: {{ chat[1] }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="list-group-item">No chats yet.</li>
+                    {% endif %}
+                </ul>
+                <a href="{{ url_for('new_chat') }}" class="btn btn-primary mt-3">Start New Chat</a>
+            </div>
+            <div class="col-md-9">
+                <!-- This can be a section for any other content if needed -->
+                <h2>Welcome to your chat dashboard!</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
