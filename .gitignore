@@ -1,0 +1,9 @@
+# Ignore model files
+models/*.safetensors
+
+# Ignore dataset files
+data/*.txt
+data/transformed_dataset.csv
+
+# Ignore database files
+apps/database.db
